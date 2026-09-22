@@ -46,7 +46,7 @@ export interface WhatIfQueryParams {
   scenarioMultiplier?: number;
 }
 
-const API_BASE_URL = 'http://localhost:8000';
+import { getApiBaseUrl } from './apiConfig';
 
 export class WhatIfService {
   public static async analyzeScenario(params: WhatIfQueryParams): Promise<WhatIfScenarioResponse> {
@@ -58,8 +58,9 @@ export class WhatIfService {
       scenario_multiplier: params.scenarioMultiplier ?? 1.0,
     };
 
+    const baseUrl = getApiBaseUrl();
     try {
-      const response = await fetch(`${API_BASE_URL}/api/what-if/analyze`, {
+      const response = await fetch(`${baseUrl}/api/what-if/analyze`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),

@@ -76,13 +76,15 @@ export interface BeforeAfterReportsResponse {
   disclaimer: string;
 }
 
-const API_BASE_URL = 'http://localhost:8000';
+import { getApiBaseUrl } from './apiConfig';
+
 const LOCAL_STORAGE_KEY = 'satshield_step28_before_after_v1';
 
 export class BeforeAfterReportService {
   public static async getReports(satelliteId: string): Promise<BeforeAfterReportsResponse> {
+    const baseUrl = getApiBaseUrl();
     try {
-      const res = await fetch(`${API_BASE_URL}/api/reports/before-after/${satelliteId}`);
+      const res = await fetch(`${baseUrl}/api/reports/before-after/${satelliteId}`);
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       return await res.json();
     } catch (err) {
@@ -109,8 +111,9 @@ export class BeforeAfterReportService {
       data_quality: 'GOOD',
     };
 
+    const baseUrl = getApiBaseUrl();
     try {
-      await fetch(`${API_BASE_URL}/api/reports/before-after/capture-before`, {
+      await fetch(`${baseUrl}/api/reports/before-after/capture-before`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
@@ -173,8 +176,9 @@ export class BeforeAfterReportService {
       data_quality: 'GOOD',
     };
 
+    const baseUrl = getApiBaseUrl();
     try {
-      await fetch(`${API_BASE_URL}/api/reports/before-after/capture-after`, {
+      await fetch(`${baseUrl}/api/reports/before-after/capture-after`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
@@ -219,8 +223,9 @@ export class BeforeAfterReportService {
   }
 
   public static async resetReports(satelliteId?: string): Promise<void> {
+    const baseUrl = getApiBaseUrl();
     try {
-      await fetch(`${API_BASE_URL}/api/reports/before-after/reset`, {
+      await fetch(`${baseUrl}/api/reports/before-after/reset`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ satellite_id: satelliteId }),

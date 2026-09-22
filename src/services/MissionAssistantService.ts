@@ -43,13 +43,7 @@ export interface AssistantMessage {
   isError?: boolean;
 }
 
-function getApiBaseUrl(): string {
-  const envUrl = (import.meta as any).env?.VITE_API_BASE_URL;
-  if (envUrl && typeof envUrl === 'string' && envUrl.trim() !== '') {
-    return envUrl.trim().replace(/\/+$/, '');
-  }
-  return '';
-}
+import { getApiBaseUrl } from './apiConfig';
 
 export async function askAIMissionAssistant(
   question: string,

@@ -6,25 +6,7 @@
  * Supports configurable base URL, relative proxied paths, and public tunnel deployments.
  */
 
-function getApiBaseUrl(): string {
-  const envUrl = (import.meta as any).env?.VITE_API_BASE_URL;
-  if (envUrl && typeof envUrl === 'string' && envUrl.trim() !== '') {
-    return envUrl.trim().replace(/\/+$/, '');
-  }
-  // When running in a browser on any non-localhost host (like trycloudflare.com),
-  // use relative URLs so requests flow through the same public origin and Vite proxy.
-  if (
-    typeof window !== 'undefined' &&
-    window.location &&
-    window.location.hostname &&
-    window.location.hostname !== 'localhost' &&
-    window.location.hostname !== '127.0.0.1'
-  ) {
-    return '';
-  }
-  // Local development default (Vite proxy also handles /api on localhost)
-  return '';
-}
+import { getApiBaseUrl } from './apiConfig';
 
 export interface MLTelemetryInput {
   satellite_id?: string;

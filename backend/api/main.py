@@ -147,12 +147,47 @@ async def trigger_anomaly_scenario(payload: ScenarioTriggerRequest):
     """Generates scenario telemetry for the selected step and runs full ML anomaly detection."""
     global detector
     sc_meta = None
+    target = (payload.scenario_id_or_key or "").strip().lower()
+
+    # 1. Exact ID or Key match
     for meta in SCENARIO_METADATA.values():
-        if meta["id"] == payload.scenario_id_or_key or meta["key"] == payload.scenario_id_or_key.lower():
+        if meta["id"] == target or meta["key"].lower() == target:
             sc_meta = meta
             break
+
+    # 2. Substring / Name match
     if not sc_meta:
-        raise HTTPException(status_code=404, detail=f"Scenario '{payload.scenario_id_or_key}' not found.")
+        for meta in SCENARIO_METADATA.values():
+            if target in meta["key"].lower() or target in meta["name"].lower():
+                sc_meta = meta
+                break
+
+    # 3. Keyword / Subsystem alias match
+    if not sc_meta:
+        alias_map = {
+            "undervoltage": "2",
+            "voltage": "2",
+            "battery_undervoltage": "2",
+            "overheat": "4",
+            "thermal": "4",
+            "temperature": "4",
+            "solar": "3",
+            "power": "3",
+            "comms": "6",
+            "communication": "6",
+            "signal": "6",
+            "attitude": "8",
+            "aocs": "8",
+            "pointing": "8",
+        }
+        for alias_key, scenario_id in alias_map.items():
+            if alias_key in target:
+                sc_meta = SCENARIO_METADATA.get(scenario_id)
+                break
+
+    # 4. Fallback to Scenario 1 if completely unrecognized
+    if not sc_meta:
+        sc_meta = SCENARIO_METADATA.get("1")
 
     telemetry = generate_scenario_telemetry(sc_meta["key"], step=payload.step)
     
@@ -213,6 +248,7 @@ async def trigger_anomaly_scenario(payload: ScenarioTriggerRequest):
 # ML ANOMALY DETECTION (REAL ISOLATION FOREST INFERENCE)
 # ============================================================================
 @app.post("/api/anomaly/detect", response_model=AnomalyDetectionResponse, tags=["Anomaly Detection"])
+@app.post("/api/ml/predict", response_model=AnomalyDetectionResponse, tags=["Anomaly Detection"])
 async def detect_anomaly(telemetry: TelemetryInput):
     """Analyzes multi-parameter telemetry using the real trained IsolationForest ML model."""
     now_utc = get_utc_now()
@@ -1040,4 +1076,7 @@ async def reset_before_after_reports(payload: Optional[Dict[str, Any]] = None):
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run("api.main:app", host="0.0.0.0", port=8000, reload=False)
+    host = os.environ.get("HOST", "0.0.0.0")
+    port = int(os.environ.get("PORT", 8000))
+    print(f"[SATSHIELD API] Starting server on {host}:{port}...")
+    uvicorn.run("api.main:app", host=host, port=port, reload=False)
