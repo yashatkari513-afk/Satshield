@@ -1,0 +1,176 @@
+{
+  "model_type": "Unsupervised Anomaly Detection",
+  "algorithm": "scikit-learn IsolationForest",
+  "evaluation_timestamp": "2026-09-14T13:26:07.994262",
+  "data_source": "satshield_ml/data/satellite_features.csv (held-out split)",
+  "data_nature": "synthetic/demo satellite telemetry",
+  "training_samples_count": 3600,
+  "validation_samples_count": 2400,
+  "normal_validation_samples": 900,
+  "anomaly_validation_samples": 1500,
+  "confusion_matrix": {
+    "true_positives": 1488,
+    "true_negatives": 729,
+    "false_positives": 171,
+    "false_negatives": 12,
+    "conservation_check": "TP(1488) + TN(729) + FP(171) + FN(12) = 2400"
+  },
+  "metrics": {
+    "precision": 0.8969,
+    "recall": 0.992,
+    "f1_score": 0.9421,
+    "accuracy": 0.9237,
+    "false_positive_rate": 0.19,
+    "false_negative_rate": 0.008,
+    "specificity": 0.81,
+    "detection_rate": 0.992
+  },
+  "breakdown_by_satellite": {
+    "GSAT-30": {
+      "total_samples": 200,
+      "normal_samples": 200,
+      "anomaly_samples": 0,
+      "detected_anomalies (TP)": 0,
+      "missed_anomalies (FN)": 0,
+      "false_alarms (FP)": 0,
+      "true_negatives (TN)": 200,
+      "recall": "N/A",
+      "precision": "N/A",
+      "accuracy": 1.0
+    },
+    "INSAT-3D": {
+      "total_samples": 600,
+      "normal_samples": 100,
+      "anomaly_samples": 500,
+      "detected_anomalies (TP)": 495,
+      "missed_anomalies (FN)": 5,
+      "false_alarms (FP)": 52,
+      "true_negatives (TN)": 48,
+      "recall": 0.99,
+      "precision": 0.9049,
+      "accuracy": 0.905
+    },
+    "SAT-001": {
+      "total_samples": 600,
+      "normal_samples": 100,
+      "anomaly_samples": 500,
+      "detected_anomalies (TP)": 497,
+      "missed_anomalies (FN)": 3,
+      "false_alarms (FP)": 58,
+      "true_negatives (TN)": 42,
+      "recall": 0.994,
+      "precision": 0.8955,
+      "accuracy": 0.8983
+    },
+    "SAT-002": {
+      "total_samples": 200,
+      "normal_samples": 200,
+      "anomaly_samples": 0,
+      "detected_anomalies (TP)": 0,
+      "missed_anomalies (FN)": 0,
+      "false_alarms (FP)": 0,
+      "true_negatives (TN)": 200,
+      "recall": "N/A",
+      "precision": "N/A",
+      "accuracy": 1.0
+    },
+    "SAT-003": {
+      "total_samples": 600,
+      "normal_samples": 100,
+      "anomaly_samples": 500,
+      "detected_anomalies (TP)": 496,
+      "missed_anomalies (FN)": 4,
+      "false_alarms (FP)": 61,
+      "true_negatives (TN)": 39,
+      "recall": 0.992,
+      "precision": 0.8905,
+      "accuracy": 0.8917
+    },
+    "SAT-004": {
+      "total_samples": 200,
+      "normal_samples": 200,
+      "anomaly_samples": 0,
+      "detected_anomalies (TP)": 0,
+      "missed_anomalies (FN)": 0,
+      "false_alarms (FP)": 0,
+      "true_negatives (TN)": 200,
+      "recall": "N/A",
+      "precision": "N/A",
+      "accuracy": 1.0
+    }
+  },
+  "breakdown_by_subsystem": {
+    "ATTITUDE": {
+      "total_samples": 569,
+      "normal_samples": 141,
+      "anomaly_samples": 428,
+      "detected_anomalies (TP)": 425,
+      "missed_anomalies (FN)": 3,
+      "false_alarms (FP)": 22,
+      "true_negatives (TN)": 119,
+      "recall": 0.993,
+      "precision": 0.9508,
+      "accuracy": 0.9561
+    },
+    "BATTERY": {
+      "total_samples": 353,
+      "normal_samples": 138,
+      "anomaly_samples": 215,
+      "detected_anomalies (TP)": 215,
+      "missed_anomalies (FN)": 0,
+      "false_alarms (FP)": 29,
+      "true_negatives (TN)": 109,
+      "recall": 1.0,
+      "precision": 0.8811,
+      "accuracy": 0.9178
+    },
+    "COMMUNICATION": {
+      "total_samples": 385,
+      "normal_samples": 171,
+      "anomaly_samples": 214,
+      "detected_anomalies (TP)": 206,
+      "missed_anomalies (FN)": 8,
+      "false_alarms (FP)": 32,
+      "true_negatives (TN)": 139,
+      "recall": 0.9626,
+      "precision": 0.8655,
+      "accuracy": 0.8961
+    },
+    "PAYLOAD": {
+      "total_samples": 160,
+      "normal_samples": 160,
+      "anomaly_samples": 0,
+      "detected_anomalies (TP)": 0,
+      "missed_anomalies (FN)": 0,
+      "false_alarms (FP)": 39,
+      "true_negatives (TN)": 121,
+      "recall": "N/A",
+      "precision": 0.0,
+      "accuracy": 0.7562
+    },
+    "POWER": {
+      "total_samples": 577,
+      "normal_samples": 149,
+      "anomaly_samples": 428,
+      "detected_anomalies (TP)": 428,
+      "missed_anomalies (FN)": 0,
+      "false_alarms (FP)": 27,
+      "true_negatives (TN)": 122,
+      "recall": 1.0,
+      "precision": 0.9407,
+      "accuracy": 0.9532
+    },
+    "THERMAL": {
+      "total_samples": 356,
+      "normal_samples": 141,
+      "anomaly_samples": 215,
+      "detected_anomalies (TP)": 214,
+      "missed_anomalies (FN)": 1,
+      "false_alarms (FP)": 22,
+      "true_negatives (TN)": 119,
+      "recall": 0.9953,
+      "precision": 0.9068,
+      "accuracy": 0.9354
+    }
+  }
+}

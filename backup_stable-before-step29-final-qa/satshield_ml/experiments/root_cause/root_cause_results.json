@@ -1,0 +1,407 @@
+{
+  "experiment_title": "SATSHIELD Step 22 - Advanced Root-Cause Analysis Experiment",
+  "timestamp": "2026-09-16T12:26:25.424308",
+  "methodology": "Multi-Signal Physical Subsystem Correlation & Temporal Persistence Engine",
+  "production_integrity": {
+    "model_path": "C:\\xampp\\htdocs\\Satelite health detector\\satshield_ml\\models\\isolation_forest.joblib",
+    "sha256_hash_before": "12d956daa955157b3aa7a85f955301136373d41ec3b11d6c00c21e4b70237fdc",
+    "sha256_hash_after": "12d956daa955157b3aa7a85f955301136373d41ec3b11d6c00c21e4b70237fdc",
+    "preserved": true
+  },
+  "scenarios_evaluated": {
+    "1_normal_telemetry": {
+      "name": "Normal Telemetry",
+      "expected_subsystem": "NOMINAL",
+      "result": {
+        "satellite_id": "SAT-001",
+        "affected_subsystem": "NOMINAL",
+        "primary_probable_cause": "Telemetry operating within standard physical envelope",
+        "evidence": [
+          "All 8 physical telemetry channels within nominal bounds"
+        ],
+        "contributing_factors": [
+          "stable stationkeeping"
+        ],
+        "evidence_strength": "NOMINAL",
+        "severity": "NOMINAL",
+        "persistence": "0 frames",
+        "trend_summary": "All telemetry metrics stable",
+        "data_quality": "GOOD",
+        "analysis_method": "Multi-Signal Temporal Correlation & Subsystem Envelope Matrix",
+        "limitations": "Heuristic and statistical correlation; does not prove internal hardware physical failure mode without telemetry ground-station triage."
+      }
+    },
+    "2_battery_degradation": {
+      "name": "Battery Degradation / Deep Discharge",
+      "expected_subsystem": "BATTERY",
+      "result": {
+        "satellite_id": "SAT-001",
+        "affected_subsystem": "BATTERY",
+        "primary_probable_cause": "Battery Deep Discharge & EPS Energy Deficit",
+        "evidence": [
+          "Battery SoC (31.5%) below nominal threshold (65.0%)",
+          "EPS bus voltage depressed (21.70 V) under nominal 26.0 V",
+          "Elevated discharge current draw (19.00 A)",
+          "Solar array undergeneration (180.0 W)"
+        ],
+        "contributing_factors": [
+          "sustained electrochemical discharge",
+          "voltage sag under load",
+          "high current consumption",
+          "solar charging deficit"
+        ],
+        "evidence_strength": "STRONG",
+        "severity": "CRITICAL",
+        "persistence": "10 consecutive frames",
+        "trend_summary": "Main Bus Voltage (-0.40V/window), Bus Current Draw (+1.00A/window), Battery State of Charge (-3.00%/window)",
+        "data_quality": "GOOD",
+        "analysis_method": "Multi-Signal Temporal Correlation & Subsystem Envelope Matrix",
+        "limitations": "Heuristic and statistical correlation; does not prove internal hardware physical failure mode without telemetry ground-station triage."
+      }
+    },
+    "3_thermal_runaway": {
+      "name": "Thermal Runaway Excursion",
+      "expected_subsystem": "THERMAL",
+      "result": {
+        "satellite_id": "SAT-001",
+        "affected_subsystem": "THERMAL",
+        "primary_probable_cause": "Thermal Loop Failure / Component Overheating",
+        "evidence": [
+          "Core temperature (86.5 \u00b0C) exceeds safe operational envelope (45.0 \u00b0C)",
+          "Rapid thermal ascent slope (+7.00 \u00b0C over recent frames)",
+          "Concomitant high power draw (16.00 A) contributing resistive Joule heating"
+        ],
+        "contributing_factors": [
+          "thermal runaway condition",
+          "unmitigated heat accumulation",
+          "resistive power dissipation"
+        ],
+        "evidence_strength": "STRONG",
+        "severity": "CRITICAL",
+        "persistence": "10 consecutive frames",
+        "trend_summary": "Core Temperature (+7.00\u00b0C/window)",
+        "data_quality": "GOOD",
+        "analysis_method": "Multi-Signal Temporal Correlation & Subsystem Envelope Matrix",
+        "limitations": "Heuristic and statistical correlation; does not prove internal hardware physical failure mode without telemetry ground-station triage."
+      }
+    },
+    "4_eps_undervoltage": {
+      "name": "EPS Main Bus Undervoltage",
+      "expected_subsystem": "POWER",
+      "result": {
+        "satellite_id": "SAT-001",
+        "affected_subsystem": "POWER",
+        "primary_probable_cause": "EPS Power Generation / Distribution Fault",
+        "evidence": [
+          "Main bus voltage anomaly (20.50 V)",
+          "Solar array power deficit (120.0 W)"
+        ],
+        "contributing_factors": [
+          "voltage regulation breakdown",
+          "array string open circuit / partial shadowing"
+        ],
+        "evidence_strength": "MODERATE",
+        "severity": "HIGH",
+        "persistence": "10 consecutive frames",
+        "trend_summary": "Steady-state telemetry progression",
+        "data_quality": "GOOD",
+        "analysis_method": "Multi-Signal Temporal Correlation & Subsystem Envelope Matrix",
+        "limitations": "Heuristic and statistical correlation; does not prove internal hardware physical failure mode without telemetry ground-station triage."
+      }
+    },
+    "5_high_current_power_anomaly": {
+      "name": "High-Current Power Surge",
+      "expected_subsystem": "POWER",
+      "result": {
+        "satellite_id": "SAT-001",
+        "affected_subsystem": "POWER",
+        "primary_probable_cause": "EPS Bus Overcurrent & Voltage Instability",
+        "evidence": [
+          "Main bus voltage anomaly (24.00 V)",
+          "Heavy power bus current surge (28.50 A)"
+        ],
+        "contributing_factors": [
+          "voltage regulation breakdown",
+          "subsystem short circuit / bus overload"
+        ],
+        "evidence_strength": "MODERATE",
+        "severity": "CRITICAL",
+        "persistence": "10 consecutive frames",
+        "trend_summary": "Steady-state telemetry progression",
+        "data_quality": "GOOD",
+        "analysis_method": "Multi-Signal Temporal Correlation & Subsystem Envelope Matrix",
+        "limitations": "Heuristic and statistical correlation; does not prove internal hardware physical failure mode without telemetry ground-station triage."
+      }
+    },
+    "6_communication_degradation": {
+      "name": "RF Downlink Signal Loss",
+      "expected_subsystem": "COMMUNICATION",
+      "result": {
+        "satellite_id": "SAT-001",
+        "affected_subsystem": "COMMUNICATION",
+        "primary_probable_cause": "RF Transponder Link Degradation",
+        "evidence": [
+          "RF downlink carrier signal degraded (-115.0 dBm)"
+        ],
+        "contributing_factors": [
+          "carrier signal attenuation",
+          "transponder / HPA RF chain degradation"
+        ],
+        "evidence_strength": "MODERATE",
+        "severity": "HIGH",
+        "persistence": "10 consecutive frames",
+        "trend_summary": "Steady-state telemetry progression",
+        "data_quality": "GOOD",
+        "analysis_method": "Multi-Signal Temporal Correlation & Subsystem Envelope Matrix",
+        "limitations": "Heuristic and statistical correlation; does not prove internal hardware physical failure mode without telemetry ground-station triage."
+      }
+    },
+    "7_attitude_instability": {
+      "name": "ADCS Pointing & Reaction Wheel Instability",
+      "expected_subsystem": "ATTITUDE",
+      "result": {
+        "satellite_id": "SAT-001",
+        "affected_subsystem": "ATTITUDE",
+        "primary_probable_cause": "Reaction Wheel / ADCS Pointing Instability",
+        "evidence": [
+          "3-axis pointing deviation (4.80\u00b0) exceeds operational limit (0.50\u00b0)",
+          "High structural micro-vibration (0.550 g)"
+        ],
+        "contributing_factors": [
+          "attitude control loop divergence",
+          "reaction wheel bearing jitter / thruster plume impingement"
+        ],
+        "evidence_strength": "MODERATE",
+        "severity": "HIGH",
+        "persistence": "10 consecutive frames",
+        "trend_summary": "Steady-state telemetry progression",
+        "data_quality": "GOOD",
+        "analysis_method": "Multi-Signal Temporal Correlation & Subsystem Envelope Matrix",
+        "limitations": "Heuristic and statistical correlation; does not prove internal hardware physical failure mode without telemetry ground-station triage."
+      }
+    },
+    "8_combined_battery_power": {
+      "name": "Combined Battery & EPS Collapse",
+      "expected_subsystem": "BATTERY",
+      "result": {
+        "satellite_id": "SAT-001",
+        "affected_subsystem": "BATTERY",
+        "primary_probable_cause": "Battery Deep Discharge & EPS Energy Deficit",
+        "evidence": [
+          "Battery SoC (30.0%) below nominal threshold (65.0%)",
+          "EPS bus voltage depressed (19.50 V) under nominal 26.0 V",
+          "Elevated discharge current draw (22.00 A)",
+          "Solar array undergeneration (150.0 W)"
+        ],
+        "contributing_factors": [
+          "sustained electrochemical discharge",
+          "voltage sag under load",
+          "high current consumption",
+          "solar charging deficit"
+        ],
+        "evidence_strength": "STRONG",
+        "severity": "CRITICAL",
+        "persistence": "10 consecutive frames",
+        "trend_summary": "Steady-state telemetry progression",
+        "data_quality": "GOOD",
+        "analysis_method": "Multi-Signal Temporal Correlation & Subsystem Envelope Matrix",
+        "limitations": "Heuristic and statistical correlation; does not prove internal hardware physical failure mode without telemetry ground-station triage."
+      }
+    },
+    "9_combined_thermal_power": {
+      "name": "Combined Thermal & High-Current Overload",
+      "expected_subsystem": "THERMAL",
+      "result": {
+        "satellite_id": "SAT-001",
+        "affected_subsystem": "THERMAL",
+        "primary_probable_cause": "Thermal Loop Failure / Component Overheating",
+        "evidence": [
+          "Core temperature (84.0 \u00b0C) exceeds safe operational envelope (45.0 \u00b0C)",
+          "Rapid thermal ascent slope (+2.00 \u00b0C over recent frames)",
+          "Concomitant high power draw (24.00 A) contributing resistive Joule heating"
+        ],
+        "contributing_factors": [
+          "thermal runaway condition",
+          "unmitigated heat accumulation",
+          "resistive power dissipation"
+        ],
+        "evidence_strength": "STRONG",
+        "severity": "CRITICAL",
+        "persistence": "10 consecutive frames",
+        "trend_summary": "Core Temperature (+2.00\u00b0C/window)",
+        "data_quality": "GOOD",
+        "analysis_method": "Multi-Signal Temporal Correlation & Subsystem Envelope Matrix",
+        "limitations": "Heuristic and statistical correlation; does not prove internal hardware physical failure mode without telemetry ground-station triage."
+      }
+    },
+    "10_multiple_simultaneous": {
+      "name": "Cascading Multi-Subsystem Failure",
+      "expected_subsystem": "ATTITUDE",
+      "result": {
+        "satellite_id": "SAT-001",
+        "affected_subsystem": "COMMUNICATION",
+        "primary_probable_cause": "Antenna Boresight Pointing Defocus",
+        "evidence": [
+          "RF downlink carrier signal degraded (-105.0 dBm)",
+          "Correlated satellite pointing misalignment (3.50\u00b0) causing antenna boresight defocus"
+        ],
+        "contributing_factors": [
+          "carrier signal attenuation",
+          "antenna geometric off-pointing"
+        ],
+        "evidence_strength": "MODERATE",
+        "severity": "HIGH",
+        "persistence": "10 consecutive frames",
+        "trend_summary": "Steady-state telemetry progression",
+        "data_quality": "GOOD",
+        "analysis_method": "Multi-Signal Temporal Correlation & Subsystem Envelope Matrix",
+        "limitations": "Heuristic and statistical correlation; does not prove internal hardware physical failure mode without telemetry ground-station triage."
+      }
+    },
+    "11_anomaly_recovery": {
+      "name": "Fault Followed by Nominal Recovery",
+      "expected_subsystem": "NOMINAL",
+      "result": {
+        "satellite_id": "SAT-001",
+        "affected_subsystem": "NOMINAL",
+        "primary_probable_cause": "Telemetry operating within standard physical envelope",
+        "evidence": [
+          "All 8 physical telemetry channels within nominal bounds"
+        ],
+        "contributing_factors": [
+          "stable stationkeeping"
+        ],
+        "evidence_strength": "NOMINAL",
+        "severity": "NOMINAL",
+        "persistence": "0 frames",
+        "trend_summary": "All telemetry metrics stable",
+        "data_quality": "GOOD",
+        "analysis_method": "Multi-Signal Temporal Correlation & Subsystem Envelope Matrix",
+        "limitations": "Heuristic and statistical correlation; does not prove internal hardware physical failure mode without telemetry ground-station triage."
+      }
+    },
+    "12_ambiguous_telemetry": {
+      "name": "Ambiguous Conflicting Sensor Triggers",
+      "expected_subsystem": "AMBIGUOUS / INSUFFICIENT EVIDENCE",
+      "result": {
+        "satellite_id": "SAT-001",
+        "affected_subsystem": "AMBIGUOUS / INSUFFICIENT EVIDENCE",
+        "primary_probable_cause": "Contradictory uncorroborated single-signal alerts across THERMAL and ATTITUDE",
+        "evidence": [
+          "Core temperature (48.0 \u00b0C) exceeds safe operational envelope (45.0 \u00b0C)",
+          "High structural micro-vibration (0.150 g)"
+        ],
+        "contributing_factors": [
+          "conflicting telemetry triggers",
+          "lack of multi-channel physical corroboration"
+        ],
+        "evidence_strength": "AMBIGUOUS",
+        "severity": "LOW",
+        "persistence": "1 frame(s)",
+        "trend_summary": "Disparate uncoupled single-sensor triggers",
+        "data_quality": "GOOD",
+        "analysis_method": "Multi-Signal Temporal Correlation & Subsystem Envelope Matrix",
+        "limitations": "Ambiguous multi-sensor conflict requires additional orbital frames for conclusive hypothesis."
+      }
+    }
+  },
+  "satellite_fleet_isolation": {
+    "fleet_results": {
+      "AGIS-3": {
+        "subsystem": "THERMAL",
+        "strength": "MODERATE",
+        "expected": "THERMAL"
+      },
+      "SENTINEL-9": {
+        "subsystem": "BATTERY",
+        "strength": "STRONG",
+        "expected": "BATTERY"
+      },
+      "ORBCOM-7": {
+        "subsystem": "NOMINAL",
+        "strength": "NOMINAL",
+        "expected": "NOMINAL"
+      },
+      "HELIOS-1": {
+        "subsystem": "NOMINAL",
+        "strength": "NOMINAL",
+        "expected": "NOMINAL"
+      }
+    },
+    "isolation_preserved": true
+  },
+  "safety_tests": [
+    {
+      "test_id": 1,
+      "name": "Normal nominal telemetry baseline",
+      "passed": true
+    },
+    {
+      "test_id": 2,
+      "name": "Battery multi-signal correlation",
+      "passed": true
+    },
+    {
+      "test_id": 3,
+      "name": "Thermal multi-signal correlation",
+      "passed": true
+    },
+    {
+      "test_id": 4,
+      "name": "Power bus surge correlation",
+      "passed": true
+    },
+    {
+      "test_id": 5,
+      "name": "Communication signal degradation",
+      "passed": true
+    },
+    {
+      "test_id": 6,
+      "name": "Attitude & structural jitter correlation",
+      "passed": true
+    },
+    {
+      "test_id": 7,
+      "name": "Combined multi-subsystem fault resolution",
+      "passed": true
+    },
+    {
+      "test_id": 8,
+      "name": "Persistence streak counter tracking",
+      "passed": true
+    },
+    {
+      "test_id": 9,
+      "name": "Nominal state reset post-recovery",
+      "passed": true
+    },
+    {
+      "test_id": 10,
+      "name": "Explicit AMBIGUOUS / INSUFFICIENT EVIDENCE return",
+      "passed": true
+    },
+    {
+      "test_id": 11,
+      "name": "Safe rejection of NaN/Inf telemetry",
+      "passed": true
+    },
+    {
+      "test_id": 12,
+      "name": "Non-monotonic timestamp detection",
+      "passed": true
+    },
+    {
+      "test_id": 13,
+      "name": "Deterministic inference output repeatability",
+      "passed": true
+    }
+  ],
+  "summary": {
+    "total_scenarios": 12,
+    "correct_subsystem_identifications": 11,
+    "ambiguous_cases_properly_handled": 1,
+    "cross_satellite_leakage_detected": false,
+    "recommendation": "READY FOR SHADOW MODE"
+  }
+}

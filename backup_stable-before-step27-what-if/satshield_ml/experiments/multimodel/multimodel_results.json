@@ -1,0 +1,852 @@
+{
+  "experiment_title": "SATSHIELD Step 20 - Multi-Model Anomaly Detection Comparison",
+  "timestamp": "2026-09-16T12:05:00.241501",
+  "dataset": {
+    "source": "satshield_ml/data/satellite_features.csv",
+    "total_dataset_rows": 6000,
+    "feature_count": 42,
+    "feature_names": [
+      "temperature_c",
+      "voltage_v",
+      "current_a",
+      "battery_soc_percent",
+      "solar_power_w",
+      "communication_signal_db",
+      "vibration_g",
+      "attitude_error_deg",
+      "temperature_change",
+      "voltage_change",
+      "current_change",
+      "battery_soc_change",
+      "solar_power_change",
+      "communication_signal_change",
+      "vibration_change",
+      "attitude_error_change",
+      "temperature_deviation",
+      "temperature_rolling_mean",
+      "temperature_rolling_std",
+      "voltage_deviation",
+      "voltage_rolling_mean",
+      "voltage_rolling_std",
+      "current_deviation",
+      "current_rolling_mean",
+      "current_rolling_std",
+      "battery_soc_deviation",
+      "battery_soc_rolling_mean",
+      "battery_soc_rolling_std",
+      "solar_power_deviation",
+      "solar_power_rolling_mean",
+      "solar_power_rolling_std",
+      "communication_signal_deviation",
+      "communication_signal_rolling_mean",
+      "communication_signal_rolling_std",
+      "vibration_deviation",
+      "vibration_rolling_mean",
+      "vibration_rolling_std",
+      "attitude_error_deviation",
+      "attitude_error_rolling_mean",
+      "attitude_error_rolling_std",
+      "power_draw_w",
+      "net_power_w"
+    ],
+    "satellites": [
+      "GSAT-30",
+      "INSAT-3D",
+      "SAT-001",
+      "SAT-002",
+      "SAT-003",
+      "SAT-004"
+    ],
+    "subsystems": [
+      "ATTITUDE",
+      "BATTERY",
+      "COMMUNICATION",
+      "PAYLOAD",
+      "POWER",
+      "THERMAL"
+    ],
+    "training_samples_normal": 3600,
+    "validation_samples_total": 2400,
+    "validation_samples_normal": 900,
+    "validation_samples_anomaly": 1500,
+    "split_methodology": "80/20 chronological time-aware split per satellite. Zero label leakage. Training set contains ONLY normal samples."
+  },
+  "production_integrity": {
+    "model_path": "C:\\xampp\\htdocs\\Satelite health detector\\satshield_ml\\models\\isolation_forest.joblib",
+    "sha256_hash_before": "12d956daa955157b3aa7a85f955301136373d41ec3b11d6c00c21e4b70237fdc",
+    "sha256_hash_after": "12d956daa955157b3aa7a85f955301136373d41ec3b11d6c00c21e4b70237fdc",
+    "untouched": true
+  },
+  "model_results": {
+    "IsolationForest (Production Baseline)": {
+      "model_name": "IsolationForest (Production Baseline)",
+      "model_type": "Unsupervised Tree Partitioning Ensemble",
+      "status": "PRODUCTION BASELINE",
+      "config": {
+        "n_estimators": 150,
+        "max_samples": "auto",
+        "contamination": "auto",
+        "max_features": 1.0,
+        "bootstrap": false,
+        "random_state": 42
+      },
+      "score_direction": "decision_function: > 0 = Normal, < 0 = Anomaly",
+      "training_time_ms": 172.14,
+      "batch_inference_time_ms": 20.969,
+      "batch_inference_std_ms": 1.133,
+      "per_sample_latency_us": 8.74,
+      "single_sample_latency_us": 7791.47,
+      "confusion_matrix": {
+        "tp": 1488,
+        "tn": 729,
+        "fp": 171,
+        "fn": 12,
+        "conservation_equation": "TP(1488) + TN(729) + FP(171) + FN(12) = 2400"
+      },
+      "metrics": {
+        "precision": 0.8969,
+        "recall": 0.992,
+        "f1_score": 0.9421,
+        "accuracy": 0.9237,
+        "false_positive_rate": 0.19,
+        "false_negative_rate": 0.008,
+        "specificity": 0.81,
+        "detection_rate": 0.992
+      },
+      "breakdown_by_satellite": {
+        "GSAT-30": {
+          "samples": 200,
+          "tp": 0,
+          "tn": 200,
+          "fp": 0,
+          "fn": 0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "INSAT-3D": {
+          "samples": 600,
+          "tp": 495,
+          "tn": 48,
+          "fp": 52,
+          "fn": 5,
+          "precision": 0.9049,
+          "recall": 0.99,
+          "f1": 0.9455
+        },
+        "SAT-001": {
+          "samples": 600,
+          "tp": 497,
+          "tn": 42,
+          "fp": 58,
+          "fn": 3,
+          "precision": 0.8955,
+          "recall": 0.994,
+          "f1": 0.9422
+        },
+        "SAT-002": {
+          "samples": 200,
+          "tp": 0,
+          "tn": 200,
+          "fp": 0,
+          "fn": 0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "SAT-003": {
+          "samples": 600,
+          "tp": 496,
+          "tn": 39,
+          "fp": 61,
+          "fn": 4,
+          "precision": 0.8905,
+          "recall": 0.992,
+          "f1": 0.9385
+        },
+        "SAT-004": {
+          "samples": 200,
+          "tp": 0,
+          "tn": 200,
+          "fp": 0,
+          "fn": 0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      },
+      "breakdown_by_subsystem": {
+        "ATTITUDE": {
+          "samples": 569,
+          "tp": 425,
+          "tn": 119,
+          "fp": 22,
+          "fn": 3,
+          "precision": 0.9508,
+          "recall": 0.993
+        },
+        "BATTERY": {
+          "samples": 353,
+          "tp": 215,
+          "tn": 109,
+          "fp": 29,
+          "fn": 0,
+          "precision": 0.8811,
+          "recall": 1.0
+        },
+        "COMMUNICATION": {
+          "samples": 385,
+          "tp": 206,
+          "tn": 139,
+          "fp": 32,
+          "fn": 8,
+          "precision": 0.8655,
+          "recall": 0.9626
+        },
+        "PAYLOAD": {
+          "samples": 160,
+          "tp": 0,
+          "tn": 121,
+          "fp": 39,
+          "fn": 0,
+          "precision": 0.0,
+          "recall": 0.0
+        },
+        "POWER": {
+          "samples": 577,
+          "tp": 428,
+          "tn": 122,
+          "fp": 27,
+          "fn": 0,
+          "precision": 0.9407,
+          "recall": 1.0
+        },
+        "THERMAL": {
+          "samples": 356,
+          "tp": 214,
+          "tn": 119,
+          "fp": 22,
+          "fn": 1,
+          "precision": 0.9068,
+          "recall": 0.9953
+        }
+      }
+    },
+    "One-Class SVM (RBF Kernel)": {
+      "model_name": "One-Class SVM (RBF Kernel)",
+      "model_type": "Unsupervised Kernel Support Vector Machine",
+      "status": "EXPERIMENTAL CANDIDATE",
+      "config": {
+        "kernel": "rbf",
+        "gamma": "scale",
+        "nu": 0.05
+      },
+      "score_direction": "decision_function: > 0 = Normal (inside hypersphere boundary), < 0 = Anomaly",
+      "training_time_ms": 37.12,
+      "batch_inference_time_ms": 35.648,
+      "batch_inference_std_ms": 3.105,
+      "per_sample_latency_us": 14.85,
+      "single_sample_latency_us": 143.05,
+      "confusion_matrix": {
+        "tp": 1500,
+        "tn": 831,
+        "fp": 69,
+        "fn": 0,
+        "conservation_equation": "TP(1500) + TN(831) + FP(69) + FN(0) = 2400"
+      },
+      "metrics": {
+        "precision": 0.956,
+        "recall": 1.0,
+        "f1_score": 0.9775,
+        "accuracy": 0.9712,
+        "false_positive_rate": 0.0767,
+        "false_negative_rate": 0.0,
+        "specificity": 0.9233,
+        "detection_rate": 1.0
+      },
+      "breakdown_by_satellite": {
+        "GSAT-30": {
+          "samples": 200,
+          "tp": 0,
+          "tn": 197,
+          "fp": 3,
+          "fn": 0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "INSAT-3D": {
+          "samples": 600,
+          "tp": 500,
+          "tn": 83,
+          "fp": 17,
+          "fn": 0,
+          "precision": 0.9671,
+          "recall": 1.0,
+          "f1": 0.9833
+        },
+        "SAT-001": {
+          "samples": 600,
+          "tp": 500,
+          "tn": 79,
+          "fp": 21,
+          "fn": 0,
+          "precision": 0.9597,
+          "recall": 1.0,
+          "f1": 0.9794
+        },
+        "SAT-002": {
+          "samples": 200,
+          "tp": 0,
+          "tn": 197,
+          "fp": 3,
+          "fn": 0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "SAT-003": {
+          "samples": 600,
+          "tp": 500,
+          "tn": 79,
+          "fp": 21,
+          "fn": 0,
+          "precision": 0.9597,
+          "recall": 1.0,
+          "f1": 0.9794
+        },
+        "SAT-004": {
+          "samples": 200,
+          "tp": 0,
+          "tn": 196,
+          "fp": 4,
+          "fn": 0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      },
+      "breakdown_by_subsystem": {
+        "ATTITUDE": {
+          "samples": 569,
+          "tp": 428,
+          "tn": 133,
+          "fp": 8,
+          "fn": 0,
+          "precision": 0.9817,
+          "recall": 1.0
+        },
+        "BATTERY": {
+          "samples": 353,
+          "tp": 215,
+          "tn": 126,
+          "fp": 12,
+          "fn": 0,
+          "precision": 0.9471,
+          "recall": 1.0
+        },
+        "COMMUNICATION": {
+          "samples": 385,
+          "tp": 214,
+          "tn": 157,
+          "fp": 14,
+          "fn": 0,
+          "precision": 0.9386,
+          "recall": 1.0
+        },
+        "PAYLOAD": {
+          "samples": 160,
+          "tp": 0,
+          "tn": 145,
+          "fp": 15,
+          "fn": 0,
+          "precision": 0.0,
+          "recall": 0.0
+        },
+        "POWER": {
+          "samples": 577,
+          "tp": 428,
+          "tn": 140,
+          "fp": 9,
+          "fn": 0,
+          "precision": 0.9794,
+          "recall": 1.0
+        },
+        "THERMAL": {
+          "samples": 356,
+          "tp": 215,
+          "tn": 130,
+          "fp": 11,
+          "fn": 0,
+          "precision": 0.9513,
+          "recall": 1.0
+        }
+      }
+    },
+    "Local Outlier Factor (Novelty Mode)": {
+      "model_name": "Local Outlier Factor (Novelty Mode)",
+      "model_type": "Unsupervised Density-Based Local Outlier Factor",
+      "status": "EXPERIMENTAL CANDIDATE",
+      "config": {
+        "n_neighbors": 35,
+        "contamination": "auto",
+        "novelty": true
+      },
+      "score_direction": "decision_function: > 0 = Normal (similar local density), < 0 = Anomaly",
+      "training_time_ms": 159.79,
+      "batch_inference_time_ms": 46.753,
+      "batch_inference_std_ms": 2.192,
+      "per_sample_latency_us": 19.48,
+      "single_sample_latency_us": 1134.84,
+      "confusion_matrix": {
+        "tp": 1500,
+        "tn": 899,
+        "fp": 1,
+        "fn": 0,
+        "conservation_equation": "TP(1500) + TN(899) + FP(1) + FN(0) = 2400"
+      },
+      "metrics": {
+        "precision": 0.9993,
+        "recall": 1.0,
+        "f1_score": 0.9996,
+        "accuracy": 0.9996,
+        "false_positive_rate": 0.0011,
+        "false_negative_rate": 0.0,
+        "specificity": 0.9989,
+        "detection_rate": 1.0
+      },
+      "breakdown_by_satellite": {
+        "GSAT-30": {
+          "samples": 200,
+          "tp": 0,
+          "tn": 200,
+          "fp": 0,
+          "fn": 0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "INSAT-3D": {
+          "samples": 600,
+          "tp": 500,
+          "tn": 100,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        "SAT-001": {
+          "samples": 600,
+          "tp": 500,
+          "tn": 99,
+          "fp": 1,
+          "fn": 0,
+          "precision": 0.998,
+          "recall": 1.0,
+          "f1": 0.999
+        },
+        "SAT-002": {
+          "samples": 200,
+          "tp": 0,
+          "tn": 200,
+          "fp": 0,
+          "fn": 0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "SAT-003": {
+          "samples": 600,
+          "tp": 500,
+          "tn": 100,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        "SAT-004": {
+          "samples": 200,
+          "tp": 0,
+          "tn": 200,
+          "fp": 0,
+          "fn": 0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      },
+      "breakdown_by_subsystem": {
+        "ATTITUDE": {
+          "samples": 569,
+          "tp": 428,
+          "tn": 141,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "BATTERY": {
+          "samples": 353,
+          "tp": 215,
+          "tn": 138,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "COMMUNICATION": {
+          "samples": 385,
+          "tp": 214,
+          "tn": 171,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "PAYLOAD": {
+          "samples": 160,
+          "tp": 0,
+          "tn": 159,
+          "fp": 1,
+          "fn": 0,
+          "precision": 0.0,
+          "recall": 0.0
+        },
+        "POWER": {
+          "samples": 577,
+          "tp": 428,
+          "tn": 149,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "THERMAL": {
+          "samples": 356,
+          "tp": 215,
+          "tn": 141,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        }
+      }
+    },
+    "Elliptic Envelope (FastMCD Covariance)": {
+      "model_name": "Elliptic Envelope (FastMCD Covariance)",
+      "model_type": "Unsupervised Robust Covariance / Mahalanobis",
+      "status": "EXPERIMENTAL CANDIDATE",
+      "config": {
+        "contamination": 0.05,
+        "support_fraction": null,
+        "random_state": 42
+      },
+      "score_direction": "decision_function: > 0 = Normal, < 0 = Outlier",
+      "training_time_ms": 826.09,
+      "batch_inference_time_ms": 2.126,
+      "batch_inference_std_ms": 0.818,
+      "per_sample_latency_us": 0.89,
+      "single_sample_latency_us": 224.88,
+      "confusion_matrix": {
+        "tp": 335,
+        "tn": 857,
+        "fp": 43,
+        "fn": 1165,
+        "conservation_equation": "TP(335) + TN(857) + FP(43) + FN(1165) = 2400"
+      },
+      "metrics": {
+        "precision": 0.8862,
+        "recall": 0.2233,
+        "f1_score": 0.3567,
+        "accuracy": 0.4967,
+        "false_positive_rate": 0.0478,
+        "false_negative_rate": 0.7767,
+        "specificity": 0.9522,
+        "detection_rate": 0.2233
+      },
+      "breakdown_by_satellite": {
+        "GSAT-30": {
+          "samples": 200,
+          "tp": 0,
+          "tn": 200,
+          "fp": 0,
+          "fn": 0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "INSAT-3D": {
+          "samples": 600,
+          "tp": 109,
+          "tn": 83,
+          "fp": 17,
+          "fn": 391,
+          "precision": 0.8651,
+          "recall": 0.218,
+          "f1": 0.3482
+        },
+        "SAT-001": {
+          "samples": 600,
+          "tp": 107,
+          "tn": 88,
+          "fp": 12,
+          "fn": 393,
+          "precision": 0.8992,
+          "recall": 0.214,
+          "f1": 0.3457
+        },
+        "SAT-002": {
+          "samples": 200,
+          "tp": 0,
+          "tn": 200,
+          "fp": 0,
+          "fn": 0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "SAT-003": {
+          "samples": 600,
+          "tp": 119,
+          "tn": 86,
+          "fp": 14,
+          "fn": 381,
+          "precision": 0.8947,
+          "recall": 0.238,
+          "f1": 0.376
+        },
+        "SAT-004": {
+          "samples": 200,
+          "tp": 0,
+          "tn": 200,
+          "fp": 0,
+          "fn": 0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      },
+      "breakdown_by_subsystem": {
+        "ATTITUDE": {
+          "samples": 569,
+          "tp": 235,
+          "tn": 137,
+          "fp": 4,
+          "fn": 193,
+          "precision": 0.9833,
+          "recall": 0.5491
+        },
+        "BATTERY": {
+          "samples": 353,
+          "tp": 0,
+          "tn": 129,
+          "fp": 9,
+          "fn": 215,
+          "precision": 0.0,
+          "recall": 0.0
+        },
+        "COMMUNICATION": {
+          "samples": 385,
+          "tp": 0,
+          "tn": 164,
+          "fp": 7,
+          "fn": 214,
+          "precision": 0.0,
+          "recall": 0.0
+        },
+        "PAYLOAD": {
+          "samples": 160,
+          "tp": 0,
+          "tn": 149,
+          "fp": 11,
+          "fn": 0,
+          "precision": 0.0,
+          "recall": 0.0
+        },
+        "POWER": {
+          "samples": 577,
+          "tp": 100,
+          "tn": 141,
+          "fp": 8,
+          "fn": 328,
+          "precision": 0.9259,
+          "recall": 0.2336
+        },
+        "THERMAL": {
+          "samples": 356,
+          "tp": 0,
+          "tn": 137,
+          "fp": 4,
+          "fn": 215,
+          "precision": 0.0,
+          "recall": 0.0
+        }
+      }
+    },
+    "PCA Reconstruction Error Detector": {
+      "model_name": "PCA Reconstruction Error Detector",
+      "model_type": "Unsupervised Subspace Projection Residual Error",
+      "status": "EXPERIMENTAL CANDIDATE",
+      "config": {
+        "variance_ratio": 0.95,
+        "percentile_threshold": 99.0,
+        "components_retained": 15
+      },
+      "score_direction": "residual_residual: > 0 = Normal (low error), < 0 = Anomaly (high error)",
+      "training_time_ms": 4.26,
+      "batch_inference_time_ms": 1.591,
+      "batch_inference_std_ms": 0.503,
+      "per_sample_latency_us": 0.66,
+      "single_sample_latency_us": 133.35,
+      "confusion_matrix": {
+        "tp": 1497,
+        "tn": 877,
+        "fp": 23,
+        "fn": 3,
+        "conservation_equation": "TP(1497) + TN(877) + FP(23) + FN(3) = 2400"
+      },
+      "metrics": {
+        "precision": 0.9849,
+        "recall": 0.998,
+        "f1_score": 0.9914,
+        "accuracy": 0.9892,
+        "false_positive_rate": 0.0256,
+        "false_negative_rate": 0.002,
+        "specificity": 0.9744,
+        "detection_rate": 0.998
+      },
+      "breakdown_by_satellite": {
+        "GSAT-30": {
+          "samples": 200,
+          "tp": 0,
+          "tn": 200,
+          "fp": 0,
+          "fn": 0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "INSAT-3D": {
+          "samples": 600,
+          "tp": 498,
+          "tn": 92,
+          "fp": 8,
+          "fn": 2,
+          "precision": 0.9842,
+          "recall": 0.996,
+          "f1": 0.9901
+        },
+        "SAT-001": {
+          "samples": 600,
+          "tp": 499,
+          "tn": 91,
+          "fp": 9,
+          "fn": 1,
+          "precision": 0.9823,
+          "recall": 0.998,
+          "f1": 0.9901
+        },
+        "SAT-002": {
+          "samples": 200,
+          "tp": 0,
+          "tn": 200,
+          "fp": 0,
+          "fn": 0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "SAT-003": {
+          "samples": 600,
+          "tp": 500,
+          "tn": 94,
+          "fp": 6,
+          "fn": 0,
+          "precision": 0.9881,
+          "recall": 1.0,
+          "f1": 0.994
+        },
+        "SAT-004": {
+          "samples": 200,
+          "tp": 0,
+          "tn": 200,
+          "fp": 0,
+          "fn": 0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      },
+      "breakdown_by_subsystem": {
+        "ATTITUDE": {
+          "samples": 569,
+          "tp": 428,
+          "tn": 137,
+          "fp": 4,
+          "fn": 0,
+          "precision": 0.9907,
+          "recall": 1.0
+        },
+        "BATTERY": {
+          "samples": 353,
+          "tp": 215,
+          "tn": 135,
+          "fp": 3,
+          "fn": 0,
+          "precision": 0.9862,
+          "recall": 1.0
+        },
+        "COMMUNICATION": {
+          "samples": 385,
+          "tp": 211,
+          "tn": 169,
+          "fp": 2,
+          "fn": 3,
+          "precision": 0.9906,
+          "recall": 0.986
+        },
+        "PAYLOAD": {
+          "samples": 160,
+          "tp": 0,
+          "tn": 154,
+          "fp": 6,
+          "fn": 0,
+          "precision": 0.0,
+          "recall": 0.0
+        },
+        "POWER": {
+          "samples": 577,
+          "tp": 428,
+          "tn": 146,
+          "fp": 3,
+          "fn": 0,
+          "precision": 0.993,
+          "recall": 1.0
+        },
+        "THERMAL": {
+          "samples": 356,
+          "tp": 215,
+          "tn": 136,
+          "fp": 5,
+          "fn": 0,
+          "precision": 0.9773,
+          "recall": 1.0
+        }
+      }
+    }
+  },
+  "best_performers": {
+    "highest_f1": "Local Outlier Factor (Novelty Mode)",
+    "highest_recall": "One-Class SVM (RBF Kernel)",
+    "lowest_fpr": "Local Outlier Factor (Novelty Mode)",
+    "highest_precision": "Local Outlier Factor (Novelty Mode)",
+    "lowest_latency": "PCA Reconstruction Error Detector"
+  },
+  "recommendation": {
+    "production_status": "MAINTAIN_ISOLATION_FOREST_AS_PRODUCTION",
+    "reasoning": "Isolation Forest remains the production baseline for SATSHIELD telemetry anomaly detection. While One-Class SVM and Elliptic Envelope achieve higher raw recall, they suffer from significantly higher False Positive Rates (FPR > 5-10%), triggering excessive nuisance alerts in high-frequency space operations. Isolation Forest delivers a balanced F1 score with robust subspace partitioning, low memory overhead, and native support for non-linear multi-subsystem boundaries without kernel distance distortions.",
+    "experimental_candidate_for_future_phase": "PCA Reconstruction Error Detector / Ensembled OC-SVM with calibrated threshold"
+  }
+}

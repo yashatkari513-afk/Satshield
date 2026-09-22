@@ -1,0 +1,1043 @@
+{
+  "summary": {
+    "total_scenarios": 22,
+    "passed_scenarios": 22,
+    "failed_scenarios": 0,
+    "scenarios": [
+      {
+        "id": 1,
+        "name": "Scenario 01: Normal Nominal Telemetry Baseline",
+        "level": "NOMINAL",
+        "urgency": "ROUTINE",
+        "subsystems": [
+          "NONE"
+        ],
+        "passed": true
+      },
+      {
+        "id": 2,
+        "name": "Scenario 02: Battery Degradation (Moderate SoC Decay)",
+        "level": "MODERATE",
+        "urgency": "WATCH",
+        "subsystems": [
+          "EPS"
+        ],
+        "passed": true
+      },
+      {
+        "id": 3,
+        "name": "Scenario 03: Severe Battery Depletion (<30% SoC)",
+        "level": "HIGH",
+        "urgency": "ACTION REQUIRED",
+        "subsystems": [
+          "EPS"
+        ],
+        "passed": true
+      },
+      {
+        "id": 4,
+        "name": "Scenario 04: EPS Main Bus Undervoltage (<21V)",
+        "level": "HIGH",
+        "urgency": "ACTION REQUIRED",
+        "subsystems": [
+          "EPS"
+        ],
+        "passed": true
+      },
+      {
+        "id": 5,
+        "name": "Scenario 05: High-Current Electrical Surge (>22A)",
+        "level": "HIGH",
+        "urgency": "ACTION REQUIRED",
+        "subsystems": [
+          "EPS"
+        ],
+        "passed": true
+      },
+      {
+        "id": 6,
+        "name": "Scenario 06: Thermal Overheating Excursion (>60\u00b0C)",
+        "level": "HIGH",
+        "urgency": "ACTION REQUIRED",
+        "subsystems": [
+          "TCS"
+        ],
+        "passed": true
+      },
+      {
+        "id": 7,
+        "name": "Scenario 07: Rapid Thermal Escalation (Steep Gradient)",
+        "level": "MODERATE",
+        "urgency": "IMMEDIATE FLIGHT INTERVENTION",
+        "subsystems": [
+          "TCS"
+        ],
+        "passed": true
+      },
+      {
+        "id": 8,
+        "name": "Scenario 08: Communication Link Attenuation (<-115 dBm)",
+        "level": "HIGH",
+        "urgency": "ACTION REQUIRED",
+        "subsystems": [
+          "COMMS"
+        ],
+        "passed": true
+      },
+      {
+        "id": 9,
+        "name": "Scenario 09: ADCS Attitude Mispointing (>4.0\u00b0)",
+        "level": "HIGH",
+        "urgency": "ACTION REQUIRED",
+        "subsystems": [
+          "ADCS"
+        ],
+        "passed": true
+      },
+      {
+        "id": 10,
+        "name": "Scenario 10: Solar Array Power Generation Collapse (<90W)",
+        "level": "HIGH",
+        "urgency": "ACTION REQUIRED",
+        "subsystems": [
+          "EPS"
+        ],
+        "passed": true
+      },
+      {
+        "id": 11,
+        "name": "Scenario 11: Compound Anomaly \u2014 Battery + Bus Undervoltage",
+        "level": "CRITICAL",
+        "urgency": "IMMEDIATE FLIGHT INTERVENTION",
+        "subsystems": [
+          "EPS"
+        ],
+        "passed": true
+      },
+      {
+        "id": 12,
+        "name": "Scenario 12: Compound Anomaly \u2014 Thermal Overheat + High Current",
+        "level": "CRITICAL",
+        "urgency": "IMMEDIATE FLIGHT INTERVENTION",
+        "subsystems": [
+          "EPS",
+          "TCS",
+          "TCS_EPS"
+        ],
+        "passed": true
+      },
+      {
+        "id": 13,
+        "name": "Scenario 13: Compound Anomaly \u2014 Communication + Attitude Error",
+        "level": "HIGH",
+        "urgency": "ACTION REQUIRED",
+        "subsystems": [
+          "COMMS",
+          "ADCS",
+          "COMMS_ADCS"
+        ],
+        "passed": true
+      },
+      {
+        "id": 14,
+        "name": "Scenario 14: Cascading Multi-Subsystem Degradation",
+        "level": "CRITICAL",
+        "urgency": "IMMEDIATE FLIGHT INTERVENTION",
+        "subsystems": [
+          "EPS",
+          "TCS",
+          "ADCS",
+          "MULTI_SYSTEM"
+        ],
+        "passed": true
+      },
+      {
+        "id": 15,
+        "name": "Scenario 15: Anomaly Sequence Followed by Complete Recovery",
+        "level": "LOW",
+        "urgency": "WATCH",
+        "subsystems": [],
+        "passed": true
+      },
+      {
+        "id": 16,
+        "name": "Scenario 16: Isolated Single-Frame Transient Vibration Spike",
+        "level": "HIGH",
+        "urgency": "ACTION REQUIRED",
+        "subsystems": [
+          "STRUCTURE / ADCS"
+        ],
+        "passed": true
+      },
+      {
+        "id": 17,
+        "name": "Scenario 17: Slow Gradual Battery Degradation Over Extended Orbit Window",
+        "level": "HIGH",
+        "urgency": "ACTION REQUIRED",
+        "subsystems": [
+          "EPS"
+        ],
+        "passed": true
+      },
+      {
+        "id": 18,
+        "name": "Scenario 18: Ambiguous Edge Telemetry (Single Barely Elevated Value)",
+        "level": "LOW",
+        "urgency": "ROUTINE",
+        "subsystems": [],
+        "passed": true
+      },
+      {
+        "id": 19,
+        "name": "Scenario 19: Insufficient Channel Coverage (<3 Canonical Telemetry Channels)",
+        "level": "LOW",
+        "urgency": "WATCH",
+        "subsystems": [
+          "TELEMETRY_PROCESSING"
+        ],
+        "passed": true
+      },
+      {
+        "id": 20,
+        "name": "Scenario 20: Malformed Input (NaN, Inf, and String Contamination)",
+        "level": "LOW",
+        "urgency": "WATCH",
+        "subsystems": [
+          "TELEMETRY_PROCESSING"
+        ],
+        "passed": true
+      },
+      {
+        "id": 21,
+        "name": "Scenario 21: Cross-Satellite Isolation State Integrity",
+        "level": "NOMINAL",
+        "urgency": "ROUTINE",
+        "subsystems": [
+          "NONE"
+        ],
+        "passed": true
+      },
+      {
+        "id": 22,
+        "name": "Scenario 22: Deterministic Repeatability & Idempotence Check",
+        "level": "HIGH",
+        "urgency": "ACTION REQUIRED",
+        "subsystems": [
+          "EPS",
+          "TCS",
+          "ADCS"
+        ],
+        "passed": true
+      }
+    ]
+  },
+  "results": [
+    {
+      "satellite_id": "SAT-EXP-01",
+      "mission_impact_level": "NOMINAL",
+      "affected_capabilities": [
+        "NOMINAL_OPERATIONS"
+      ],
+      "primary_operational_impact": "All monitored subsystems operating within nominal flight envelopes.",
+      "potential_mission_consequences": [
+        "No mission degradation detected; operations proceeding as scheduled."
+      ],
+      "impacted_subsystems": [
+        "NONE"
+      ],
+      "risk_drivers": [
+        "All parameters within nominal operational envelopes."
+      ],
+      "persistence": "STEADY_NOMINAL",
+      "trend_summary": "Nominal single frame observation",
+      "urgency": "ROUTINE",
+      "recommended_operator_response": [
+        "Maintain standard routine telemetry monitoring."
+      ],
+      "root_cause_context": {},
+      "data_quality": "GOOD",
+      "analysis_method": "Deterministic Subsystem Capability & Mission Dependency Matrix",
+      "limitations": "Mission impact assessment is a telemetry-grounded operational risk assessment for decision support. It does not represent a validated flight-certification model.",
+      "scenario_id": 1,
+      "scenario_name": "Scenario 01: Normal Nominal Telemetry Baseline",
+      "test_passed": true,
+      "fail_reasons": []
+    },
+    {
+      "satellite_id": "SAT-EXP-02",
+      "mission_impact_level": "MODERATE",
+      "affected_capabilities": [
+        "BATTERY ENDURANCE"
+      ],
+      "primary_operational_impact": "Minor subsystem anomalies observed; capability degradation is localized.",
+      "potential_mission_consequences": [
+        "Potential mission impact: reduced stored energy margin could constrain upcoming orbit cycles."
+      ],
+      "impacted_subsystems": [
+        "EPS"
+      ],
+      "risk_drivers": [
+        "Battery SoC degraded to 42.0%"
+      ],
+      "persistence": "SINGLE_FRAME (Transient / Initial Alert)",
+      "trend_summary": "Initial observation without baseline history",
+      "urgency": "WATCH",
+      "recommended_operator_response": [
+        "Prioritize energy conservation and monitor battery state-of-charge."
+      ],
+      "root_cause_context": {
+        "primary_root_cause_subsystem": "EPS",
+        "severity": "WARNING"
+      },
+      "data_quality": "GOOD",
+      "analysis_method": "Deterministic Subsystem Capability & Mission Dependency Matrix",
+      "limitations": "Mission impact assessment is a telemetry-grounded operational risk assessment for decision support. It does not represent a validated flight-certification model.",
+      "scenario_id": 2,
+      "scenario_name": "Scenario 02: Battery Degradation (Moderate SoC Decay)",
+      "test_passed": true,
+      "fail_reasons": []
+    },
+    {
+      "satellite_id": "SAT-EXP-03",
+      "mission_impact_level": "HIGH",
+      "affected_capabilities": [
+        "BATTERY ENDURANCE",
+        "PAYLOAD / MISSION OPERATIONS"
+      ],
+      "primary_operational_impact": "Operational capabilities are degraded with potential mission constraints.",
+      "potential_mission_consequences": [
+        "Potential mission impact: severe energy deficit may prevent eclipse operations.",
+        "May reduce payload operational duty cycles during dark passes.",
+        "Operational risk: mission payload observation schedule may require rescheduling or suspension."
+      ],
+      "impacted_subsystems": [
+        "EPS"
+      ],
+      "risk_drivers": [
+        "Battery SoC degraded to 24.0%"
+      ],
+      "persistence": "SINGLE_FRAME (Transient / Initial Alert)",
+      "trend_summary": "Initial observation without baseline history",
+      "urgency": "ACTION REQUIRED",
+      "recommended_operator_response": [
+        "Prioritize energy conservation and monitor battery state-of-charge.",
+        "Recommended operator response: shed secondary payload heaters and non-critical loads."
+      ],
+      "root_cause_context": {
+        "primary_root_cause_subsystem": "EPS",
+        "severity": "CRITICAL"
+      },
+      "data_quality": "GOOD",
+      "analysis_method": "Deterministic Subsystem Capability & Mission Dependency Matrix",
+      "limitations": "Mission impact assessment is a telemetry-grounded operational risk assessment for decision support. It does not represent a validated flight-certification model.",
+      "scenario_id": 3,
+      "scenario_name": "Scenario 03: Severe Battery Depletion (<30% SoC)",
+      "test_passed": true,
+      "fail_reasons": []
+    },
+    {
+      "satellite_id": "SAT-EXP-04",
+      "mission_impact_level": "HIGH",
+      "affected_capabilities": [
+        "POWER AVAILABILITY",
+        "PAYLOAD / MISSION OPERATIONS"
+      ],
+      "primary_operational_impact": "Operational capabilities are degraded with potential mission constraints.",
+      "potential_mission_consequences": [
+        "Operational risk: unstable bus voltage may trigger autonomous load-shedding or subsystem shutdown.",
+        "Operational risk: mission payload observation schedule may require rescheduling or suspension."
+      ],
+      "impacted_subsystems": [
+        "EPS"
+      ],
+      "risk_drivers": [
+        "Main bus voltage anomaly (19.8V)"
+      ],
+      "persistence": "SINGLE_FRAME (Transient / Initial Alert)",
+      "trend_summary": "Initial observation without baseline history",
+      "urgency": "ACTION REQUIRED",
+      "recommended_operator_response": [
+        "Review EPS load distribution and reduce non-essential loads."
+      ],
+      "root_cause_context": {
+        "primary_root_cause_subsystem": "EPS",
+        "severity": "CRITICAL"
+      },
+      "data_quality": "GOOD",
+      "analysis_method": "Deterministic Subsystem Capability & Mission Dependency Matrix",
+      "limitations": "Mission impact assessment is a telemetry-grounded operational risk assessment for decision support. It does not represent a validated flight-certification model.",
+      "scenario_id": 4,
+      "scenario_name": "Scenario 04: EPS Main Bus Undervoltage (<21V)",
+      "test_passed": true,
+      "fail_reasons": []
+    },
+    {
+      "satellite_id": "SAT-EXP-05",
+      "mission_impact_level": "HIGH",
+      "affected_capabilities": [
+        "POWER AVAILABILITY",
+        "PAYLOAD / MISSION OPERATIONS"
+      ],
+      "primary_operational_impact": "Operational capabilities are degraded with potential mission constraints.",
+      "potential_mission_consequences": [
+        "Potential mission impact: electrical overload could induce thermal stress and accelerate battery drain.",
+        "Operational risk: mission payload observation schedule may require rescheduling or suspension."
+      ],
+      "impacted_subsystems": [
+        "EPS"
+      ],
+      "risk_drivers": [
+        "High electrical bus current (24.5A)"
+      ],
+      "persistence": "SINGLE_FRAME (Transient / Initial Alert)",
+      "trend_summary": "Initial observation without baseline history",
+      "urgency": "ACTION REQUIRED",
+      "recommended_operator_response": [
+        "Review subsystem power consumption telemetry to isolate unexpected electrical draws."
+      ],
+      "root_cause_context": {
+        "primary_root_cause_subsystem": "EPS",
+        "severity": "CRITICAL"
+      },
+      "data_quality": "GOOD",
+      "analysis_method": "Deterministic Subsystem Capability & Mission Dependency Matrix",
+      "limitations": "Mission impact assessment is a telemetry-grounded operational risk assessment for decision support. It does not represent a validated flight-certification model.",
+      "scenario_id": 5,
+      "scenario_name": "Scenario 05: High-Current Electrical Surge (>22A)",
+      "test_passed": true,
+      "fail_reasons": []
+    },
+    {
+      "satellite_id": "SAT-EXP-06",
+      "mission_impact_level": "HIGH",
+      "affected_capabilities": [
+        "THERMAL SAFETY",
+        "PAYLOAD / MISSION OPERATIONS"
+      ],
+      "primary_operational_impact": "Operational capabilities are degraded with potential mission constraints.",
+      "potential_mission_consequences": [
+        "Operational risk: elevated temperatures may reduce electronics lifespan or trigger autonomous thermal protection throttling.",
+        "Operational risk: mission payload observation schedule may require rescheduling or suspension."
+      ],
+      "impacted_subsystems": [
+        "TCS"
+      ],
+      "risk_drivers": [
+        "Thermal excursion (62.0\u00b0C)"
+      ],
+      "persistence": "SINGLE_FRAME (Transient / Initial Alert)",
+      "trend_summary": "Initial observation without baseline history",
+      "urgency": "ACTION REQUIRED",
+      "recommended_operator_response": [
+        "Reduce thermal load, duty-cycle high-power transmitters, and monitor temperature trend."
+      ],
+      "root_cause_context": {
+        "primary_root_cause_subsystem": "TCS",
+        "severity": "CRITICAL"
+      },
+      "data_quality": "GOOD",
+      "analysis_method": "Deterministic Subsystem Capability & Mission Dependency Matrix",
+      "limitations": "Mission impact assessment is a telemetry-grounded operational risk assessment for decision support. It does not represent a validated flight-certification model.",
+      "scenario_id": 6,
+      "scenario_name": "Scenario 06: Thermal Overheating Excursion (>60\u00b0C)",
+      "test_passed": true,
+      "fail_reasons": []
+    },
+    {
+      "satellite_id": "SAT-EXP-07",
+      "mission_impact_level": "MODERATE",
+      "affected_capabilities": [
+        "THERMAL SAFETY"
+      ],
+      "primary_operational_impact": "Minor subsystem anomalies observed; capability degradation is localized.",
+      "potential_mission_consequences": [
+        "Operational risk: elevated temperatures may reduce electronics lifespan or trigger autonomous thermal protection throttling."
+      ],
+      "impacted_subsystems": [
+        "TCS"
+      ],
+      "risk_drivers": [
+        "Thermal excursion (52.0\u00b0C)",
+        "High rate of parameter change detected across telemetry history window"
+      ],
+      "persistence": "TRANSIENT_ANOMALY (Isolated single-frame excursion)",
+      "trend_summary": "Rapid thermal escalation (+10.00\u00b0C/s)",
+      "urgency": "IMMEDIATE FLIGHT INTERVENTION",
+      "recommended_operator_response": [
+        "Reduce thermal load, duty-cycle high-power transmitters, and monitor temperature trend."
+      ],
+      "root_cause_context": {
+        "primary_root_cause_subsystem": "TCS",
+        "severity": "WARNING"
+      },
+      "data_quality": "GOOD",
+      "analysis_method": "Deterministic Subsystem Capability & Mission Dependency Matrix",
+      "limitations": "Mission impact assessment is a telemetry-grounded operational risk assessment for decision support. It does not represent a validated flight-certification model.",
+      "scenario_id": 7,
+      "scenario_name": "Scenario 07: Rapid Thermal Escalation (Steep Gradient)",
+      "test_passed": true,
+      "fail_reasons": []
+    },
+    {
+      "satellite_id": "SAT-EXP-08",
+      "mission_impact_level": "HIGH",
+      "affected_capabilities": [
+        "COMMUNICATION / LINK AVAILABILITY"
+      ],
+      "primary_operational_impact": "Operational capabilities are degraded with potential mission constraints.",
+      "potential_mission_consequences": [
+        "Potential mission impact: reduced ground-link margin may delay telemetry dumping and commanding passes."
+      ],
+      "impacted_subsystems": [
+        "COMMS"
+      ],
+      "risk_drivers": [
+        "Downlink signal attenuation (-118.0 dBm)"
+      ],
+      "persistence": "SINGLE_FRAME (Transient / Initial Alert)",
+      "trend_summary": "Initial observation without baseline history",
+      "urgency": "ACTION REQUIRED",
+      "recommended_operator_response": [
+        "Verify RF link health, ground-contact availability, and consider antenna pointing offset trim."
+      ],
+      "root_cause_context": {
+        "primary_root_cause_subsystem": "COMMS",
+        "severity": "CRITICAL"
+      },
+      "data_quality": "GOOD",
+      "analysis_method": "Deterministic Subsystem Capability & Mission Dependency Matrix",
+      "limitations": "Mission impact assessment is a telemetry-grounded operational risk assessment for decision support. It does not represent a validated flight-certification model.",
+      "scenario_id": 8,
+      "scenario_name": "Scenario 08: Communication Link Attenuation (<-115 dBm)",
+      "test_passed": true,
+      "fail_reasons": []
+    },
+    {
+      "satellite_id": "SAT-EXP-09",
+      "mission_impact_level": "HIGH",
+      "affected_capabilities": [
+        "ATTITUDE / POINTING CAPABILITY",
+        "PAYLOAD / MISSION OPERATIONS"
+      ],
+      "primary_operational_impact": "Operational capabilities are degraded with potential mission constraints.",
+      "potential_mission_consequences": [
+        "Potential mission impact: pointing degradation could constrain payload imaging and ground station antenna tracking.",
+        "Operational risk: mission payload observation schedule may require rescheduling or suspension."
+      ],
+      "impacted_subsystems": [
+        "ADCS"
+      ],
+      "risk_drivers": [
+        "Pointing attitude error (4.80\u00b0)"
+      ],
+      "persistence": "SINGLE_FRAME (Transient / Initial Alert)",
+      "trend_summary": "Initial observation without baseline history",
+      "urgency": "ACTION REQUIRED",
+      "recommended_operator_response": [
+        "Review ADCS telemetry, reaction wheel speeds, and verify star tracker / sun sensor health."
+      ],
+      "root_cause_context": {
+        "primary_root_cause_subsystem": "ADCS",
+        "severity": "CRITICAL"
+      },
+      "data_quality": "GOOD",
+      "analysis_method": "Deterministic Subsystem Capability & Mission Dependency Matrix",
+      "limitations": "Mission impact assessment is a telemetry-grounded operational risk assessment for decision support. It does not represent a validated flight-certification model.",
+      "scenario_id": 9,
+      "scenario_name": "Scenario 09: ADCS Attitude Mispointing (>4.0\u00b0)",
+      "test_passed": true,
+      "fail_reasons": []
+    },
+    {
+      "satellite_id": "SAT-EXP-10",
+      "mission_impact_level": "HIGH",
+      "affected_capabilities": [
+        "POWER AVAILABILITY",
+        "PAYLOAD / MISSION OPERATIONS"
+      ],
+      "primary_operational_impact": "Operational capabilities are degraded with potential mission constraints.",
+      "potential_mission_consequences": [
+        "Potential mission impact: reduced generation rate may constrain daylight battery replenishment.",
+        "Operational risk: mission payload observation schedule may require rescheduling or suspension."
+      ],
+      "impacted_subsystems": [
+        "EPS"
+      ],
+      "risk_drivers": [
+        "Solar array power generation degraded to 80.0W"
+      ],
+      "persistence": "SINGLE_FRAME (Transient / Initial Alert)",
+      "trend_summary": "Initial observation without baseline history",
+      "urgency": "ACTION REQUIRED",
+      "recommended_operator_response": [
+        "Verify solar array drive assembly (SADA) orientation and sun sensor telemetry."
+      ],
+      "root_cause_context": {
+        "primary_root_cause_subsystem": "EPS",
+        "severity": "CRITICAL"
+      },
+      "data_quality": "GOOD",
+      "analysis_method": "Deterministic Subsystem Capability & Mission Dependency Matrix",
+      "limitations": "Mission impact assessment is a telemetry-grounded operational risk assessment for decision support. It does not represent a validated flight-certification model.",
+      "scenario_id": 10,
+      "scenario_name": "Scenario 10: Solar Array Power Generation Collapse (<90W)",
+      "test_passed": true,
+      "fail_reasons": []
+    },
+    {
+      "satellite_id": "SAT-EXP-11",
+      "mission_impact_level": "CRITICAL",
+      "affected_capabilities": [
+        "BATTERY ENDURANCE",
+        "POWER AVAILABILITY",
+        "PAYLOAD / MISSION OPERATIONS"
+      ],
+      "primary_operational_impact": "Subsystem degradation is actively compromising operational margins and spacecraft health.",
+      "potential_mission_consequences": [
+        "Potential mission impact: severe energy deficit may prevent eclipse operations.",
+        "May reduce payload operational duty cycles during dark passes.",
+        "Operational risk: unstable bus voltage may trigger autonomous load-shedding or subsystem shutdown.",
+        "Compound operational risk: combined battery depletion and bus undervoltage significantly heighten EPS failure probability.",
+        "Operational risk: mission payload observation schedule may require rescheduling or suspension."
+      ],
+      "impacted_subsystems": [
+        "EPS"
+      ],
+      "risk_drivers": [
+        "Battery SoC degraded to 28.0%",
+        "Main bus voltage anomaly (20.5V)"
+      ],
+      "persistence": "SINGLE_FRAME (Transient / Initial Alert)",
+      "trend_summary": "Initial observation without baseline history",
+      "urgency": "IMMEDIATE FLIGHT INTERVENTION",
+      "recommended_operator_response": [
+        "Prioritize energy conservation and monitor battery state-of-charge.",
+        "Recommended operator response: shed secondary payload heaters and non-critical loads.",
+        "Review EPS load distribution and reduce non-essential loads.",
+        "Execute emergency power conservation mode: disable non-essential science payload."
+      ],
+      "root_cause_context": {
+        "primary_root_cause_subsystem": "EPS",
+        "severity": "CRITICAL"
+      },
+      "data_quality": "GOOD",
+      "analysis_method": "Deterministic Subsystem Capability & Mission Dependency Matrix",
+      "limitations": "Mission impact assessment is a telemetry-grounded operational risk assessment for decision support. It does not represent a validated flight-certification model.",
+      "scenario_id": 11,
+      "scenario_name": "Scenario 11: Compound Anomaly \u2014 Battery + Bus Undervoltage",
+      "test_passed": true,
+      "fail_reasons": []
+    },
+    {
+      "satellite_id": "SAT-EXP-12",
+      "mission_impact_level": "CRITICAL",
+      "affected_capabilities": [
+        "POWER AVAILABILITY",
+        "THERMAL SAFETY",
+        "PAYLOAD / MISSION OPERATIONS"
+      ],
+      "primary_operational_impact": "Subsystem degradation is actively compromising operational margins and spacecraft health.",
+      "potential_mission_consequences": [
+        "Potential mission impact: electrical overload could induce thermal stress and accelerate battery drain.",
+        "Operational risk: elevated temperatures may reduce electronics lifespan or trigger autonomous thermal protection throttling.",
+        "Compound operational risk: simultaneous high electrical current and elevated thermal state indicate severe thermal-electrical coupling.",
+        "Operational risk: mission payload observation schedule may require rescheduling or suspension."
+      ],
+      "impacted_subsystems": [
+        "EPS",
+        "TCS",
+        "TCS_EPS"
+      ],
+      "risk_drivers": [
+        "High electrical bus current (23.0A)",
+        "Thermal excursion (58.0\u00b0C)",
+        "Root-cause analysis corroborated TCS_EPS degradation (CRITICAL)"
+      ],
+      "persistence": "SINGLE_FRAME (Transient / Initial Alert)",
+      "trend_summary": "Initial observation without baseline history",
+      "urgency": "IMMEDIATE FLIGHT INTERVENTION",
+      "recommended_operator_response": [
+        "Review subsystem power consumption telemetry to isolate unexpected electrical draws.",
+        "Reduce thermal load, duty-cycle high-power transmitters, and monitor temperature trend.",
+        "Throttle active high-draw subsystems immediately to prevent thermal runaway."
+      ],
+      "root_cause_context": {
+        "primary_root_cause_subsystem": "TCS_EPS",
+        "severity": "CRITICAL"
+      },
+      "data_quality": "GOOD",
+      "analysis_method": "Deterministic Subsystem Capability & Mission Dependency Matrix",
+      "limitations": "Mission impact assessment is a telemetry-grounded operational risk assessment for decision support. It does not represent a validated flight-certification model.",
+      "scenario_id": 12,
+      "scenario_name": "Scenario 12: Compound Anomaly \u2014 Thermal Overheat + High Current",
+      "test_passed": true,
+      "fail_reasons": []
+    },
+    {
+      "satellite_id": "SAT-EXP-13",
+      "mission_impact_level": "HIGH",
+      "affected_capabilities": [
+        "COMMUNICATION / LINK AVAILABILITY",
+        "ATTITUDE / POINTING CAPABILITY",
+        "PAYLOAD / MISSION OPERATIONS"
+      ],
+      "primary_operational_impact": "Operational capabilities are degraded with potential mission constraints.",
+      "potential_mission_consequences": [
+        "Potential mission impact: reduced ground-link margin may delay telemetry dumping and commanding passes.",
+        "Potential mission impact: pointing degradation could constrain payload imaging and ground station antenna tracking.",
+        "Compound operational risk: attitude mispointing is directly compromising ground communication link margin.",
+        "Operational risk: mission payload observation schedule may require rescheduling or suspension."
+      ],
+      "impacted_subsystems": [
+        "COMMS",
+        "ADCS",
+        "COMMS_ADCS"
+      ],
+      "risk_drivers": [
+        "Downlink signal attenuation (-112.0 dBm)",
+        "Pointing attitude error (3.80\u00b0)",
+        "Root-cause analysis corroborated COMMS_ADCS degradation (CRITICAL)"
+      ],
+      "persistence": "SINGLE_FRAME (Transient / Initial Alert)",
+      "trend_summary": "Initial observation without baseline history",
+      "urgency": "ACTION REQUIRED",
+      "recommended_operator_response": [
+        "Verify RF link health, ground-contact availability, and consider antenna pointing offset trim.",
+        "Review ADCS telemetry, reaction wheel speeds, and verify star tracker / sun sensor health.",
+        "Re-acquire Earth pointing using coarse sun/magnetometer guidance before executing heavy uplink commands."
+      ],
+      "root_cause_context": {
+        "primary_root_cause_subsystem": "COMMS_ADCS",
+        "severity": "CRITICAL"
+      },
+      "data_quality": "GOOD",
+      "analysis_method": "Deterministic Subsystem Capability & Mission Dependency Matrix",
+      "limitations": "Mission impact assessment is a telemetry-grounded operational risk assessment for decision support. It does not represent a validated flight-certification model.",
+      "scenario_id": 13,
+      "scenario_name": "Scenario 13: Compound Anomaly \u2014 Communication + Attitude Error",
+      "test_passed": true,
+      "fail_reasons": []
+    },
+    {
+      "satellite_id": "SAT-EXP-14",
+      "mission_impact_level": "CRITICAL",
+      "affected_capabilities": [
+        "BATTERY ENDURANCE",
+        "POWER AVAILABILITY",
+        "THERMAL SAFETY",
+        "ATTITUDE / POINTING CAPABILITY",
+        "SPACECRAFT HEALTH / SURVIVABILITY",
+        "PAYLOAD / MISSION OPERATIONS"
+      ],
+      "primary_operational_impact": "Subsystem degradation is actively compromising operational margins and spacecraft health.",
+      "potential_mission_consequences": [
+        "Potential mission impact: severe energy deficit may prevent eclipse operations.",
+        "May reduce payload operational duty cycles during dark passes.",
+        "Operational risk: unstable bus voltage may trigger autonomous load-shedding or subsystem shutdown.",
+        "Operational risk: elevated temperatures may reduce electronics lifespan or trigger autonomous thermal protection throttling.",
+        "Potential mission impact: pointing degradation could constrain payload imaging and ground station antenna tracking.",
+        "Compound operational risk: combined battery depletion and bus undervoltage significantly heighten EPS failure probability.",
+        "Potential mission impact: multi-subsystem cascading degradation threatens overall spacecraft health and survivability.",
+        "Operational risk: mission payload observation schedule may require rescheduling or suspension."
+      ],
+      "impacted_subsystems": [
+        "EPS",
+        "TCS",
+        "ADCS",
+        "MULTI_SYSTEM"
+      ],
+      "risk_drivers": [
+        "Battery SoC degraded to 25.0%",
+        "Main bus voltage anomaly (20.0V)",
+        "Thermal excursion (61.0\u00b0C)",
+        "Pointing attitude error (4.50\u00b0)",
+        "Root-cause analysis corroborated MULTI_SYSTEM degradation (CRITICAL)"
+      ],
+      "persistence": "SINGLE_FRAME (Transient / Initial Alert)",
+      "trend_summary": "Initial observation without baseline history",
+      "urgency": "IMMEDIATE FLIGHT INTERVENTION",
+      "recommended_operator_response": [
+        "Prioritize energy conservation and monitor battery state-of-charge.",
+        "Recommended operator response: shed secondary payload heaters and non-critical loads.",
+        "Review EPS load distribution and reduce non-essential loads.",
+        "Reduce thermal load, duty-cycle high-power transmitters, and monitor temperature trend.",
+        "Review ADCS telemetry, reaction wheel speeds, and verify star tracker / sun sensor health.",
+        "Execute emergency power conservation mode: disable non-essential science payload.",
+        "Prioritize the highest-severity subsystem and monitor interacting telemetry channels."
+      ],
+      "root_cause_context": {
+        "primary_root_cause_subsystem": "MULTI_SYSTEM",
+        "severity": "CRITICAL"
+      },
+      "data_quality": "GOOD",
+      "analysis_method": "Deterministic Subsystem Capability & Mission Dependency Matrix",
+      "limitations": "Mission impact assessment is a telemetry-grounded operational risk assessment for decision support. It does not represent a validated flight-certification model.",
+      "scenario_id": 14,
+      "scenario_name": "Scenario 14: Cascading Multi-Subsystem Degradation",
+      "test_passed": true,
+      "fail_reasons": []
+    },
+    {
+      "satellite_id": "SAT-EXP-15",
+      "mission_impact_level": "LOW",
+      "affected_capabilities": [],
+      "primary_operational_impact": "Telemetry returning to nominal envelope; monitoring residual trends.",
+      "potential_mission_consequences": [],
+      "impacted_subsystems": [],
+      "risk_drivers": [],
+      "persistence": "RECOVERING (Telemetry returned within nominal envelope)",
+      "trend_summary": "Rapid thermal cooling (-9.88\u00b0C/s)",
+      "urgency": "WATCH",
+      "recommended_operator_response": [
+        "Continue standard telemetry monitoring to verify recovery stability."
+      ],
+      "root_cause_context": {},
+      "data_quality": "GOOD",
+      "analysis_method": "Deterministic Subsystem Capability & Mission Dependency Matrix",
+      "limitations": "Mission impact assessment is a telemetry-grounded operational risk assessment for decision support. It does not represent a validated flight-certification model.",
+      "scenario_id": 15,
+      "scenario_name": "Scenario 15: Anomaly Sequence Followed by Complete Recovery",
+      "test_passed": true,
+      "fail_reasons": []
+    },
+    {
+      "satellite_id": "SAT-EXP-16",
+      "mission_impact_level": "HIGH",
+      "affected_capabilities": [],
+      "primary_operational_impact": "Operational capabilities are degraded with potential mission constraints.",
+      "potential_mission_consequences": [
+        "Potential mission impact: mechanical jitter may degrade optical payload resolution and sensor alignment."
+      ],
+      "impacted_subsystems": [
+        "STRUCTURE / ADCS"
+      ],
+      "risk_drivers": [
+        "Elevated structural vibration (1.60g)"
+      ],
+      "persistence": "TRANSIENT_ANOMALY (Isolated single-frame excursion)",
+      "trend_summary": "Stable trend across tracked telemetry channels",
+      "urgency": "ACTION REQUIRED",
+      "recommended_operator_response": [
+        "Review reaction wheel / gyro mechanical harmonics and active payload mechanisms."
+      ],
+      "root_cause_context": {},
+      "data_quality": "GOOD",
+      "analysis_method": "Deterministic Subsystem Capability & Mission Dependency Matrix",
+      "limitations": "Mission impact assessment is a telemetry-grounded operational risk assessment for decision support. It does not represent a validated flight-certification model.",
+      "scenario_id": 16,
+      "scenario_name": "Scenario 16: Isolated Single-Frame Transient Vibration Spike",
+      "test_passed": true,
+      "fail_reasons": []
+    },
+    {
+      "satellite_id": "SAT-EXP-17",
+      "mission_impact_level": "HIGH",
+      "affected_capabilities": [
+        "BATTERY ENDURANCE"
+      ],
+      "primary_operational_impact": "Operational capabilities are degraded with potential mission constraints.",
+      "potential_mission_consequences": [
+        "Potential mission impact: reduced stored energy margin could constrain upcoming orbit cycles."
+      ],
+      "impacted_subsystems": [
+        "EPS"
+      ],
+      "risk_drivers": [
+        "Battery SoC degraded to 44.0%"
+      ],
+      "persistence": "PERSISTENT_ANOMALY (Continuous degradation across multiple frames)",
+      "trend_summary": "Stable trend across tracked telemetry channels",
+      "urgency": "ACTION REQUIRED",
+      "recommended_operator_response": [
+        "Prioritize energy conservation and monitor battery state-of-charge."
+      ],
+      "root_cause_context": {
+        "primary_root_cause_subsystem": "EPS",
+        "severity": "WARNING"
+      },
+      "data_quality": "GOOD",
+      "analysis_method": "Deterministic Subsystem Capability & Mission Dependency Matrix",
+      "limitations": "Mission impact assessment is a telemetry-grounded operational risk assessment for decision support. It does not represent a validated flight-certification model.",
+      "scenario_id": 17,
+      "scenario_name": "Scenario 17: Slow Gradual Battery Degradation Over Extended Orbit Window",
+      "test_passed": true,
+      "fail_reasons": []
+    },
+    {
+      "satellite_id": "SAT-EXP-18",
+      "mission_impact_level": "LOW",
+      "affected_capabilities": [],
+      "primary_operational_impact": "Telemetry near edge of nominal bounds; minimal operational impact.",
+      "potential_mission_consequences": [],
+      "impacted_subsystems": [],
+      "risk_drivers": [],
+      "persistence": "STEADY_NOMINAL",
+      "trend_summary": "Nominal single frame observation",
+      "urgency": "ROUTINE",
+      "recommended_operator_response": [],
+      "root_cause_context": {},
+      "data_quality": "GOOD",
+      "analysis_method": "Deterministic Subsystem Capability & Mission Dependency Matrix",
+      "limitations": "Mission impact assessment is a telemetry-grounded operational risk assessment for decision support. It does not represent a validated flight-certification model.",
+      "scenario_id": 18,
+      "scenario_name": "Scenario 18: Ambiguous Edge Telemetry (Single Barely Elevated Value)",
+      "test_passed": true,
+      "fail_reasons": []
+    },
+    {
+      "satellite_id": "SAT-EXP-19",
+      "mission_impact_level": "LOW",
+      "affected_capabilities": [
+        "UNKNOWN / UNVERIFIED"
+      ],
+      "primary_operational_impact": "Assessment constrained: Only 2/8 canonical channels provided; insufficient for reliable mission impact assessment",
+      "potential_mission_consequences": [
+        "Operator visibility impaired due to data quality degradation."
+      ],
+      "impacted_subsystems": [
+        "TELEMETRY_PROCESSING"
+      ],
+      "risk_drivers": [
+        "Only 2/8 canonical channels provided; insufficient for reliable mission impact assessment"
+      ],
+      "persistence": "INSUFFICIENT EVIDENCE",
+      "trend_summary": "Unable to establish valid temporal trend",
+      "urgency": "WATCH",
+      "recommended_operator_response": [
+        "Verify telemetry downlink stream and sensor communication interface.",
+        "Check ground data processing pipeline for corrupted frames."
+      ],
+      "root_cause_context": {},
+      "data_quality": "INSUFFICIENT",
+      "analysis_method": "Deterministic Subsystem Capability & Mission Dependency Matrix",
+      "limitations": "Mission impact assessment is a telemetry-grounded operational risk assessment for decision support. It does not represent a validated flight-certification model.",
+      "scenario_id": 19,
+      "scenario_name": "Scenario 19: Insufficient Channel Coverage (<3 Canonical Telemetry Channels)",
+      "test_passed": true,
+      "fail_reasons": []
+    },
+    {
+      "satellite_id": "SAT-EXP-20",
+      "mission_impact_level": "LOW",
+      "affected_capabilities": [
+        "UNKNOWN / UNVERIFIED"
+      ],
+      "primary_operational_impact": "Assessment constrained: temperature_c is NaN/Inf",
+      "potential_mission_consequences": [
+        "Operator visibility impaired due to data quality degradation."
+      ],
+      "impacted_subsystems": [
+        "TELEMETRY_PROCESSING"
+      ],
+      "risk_drivers": [
+        "temperature_c is NaN/Inf",
+        "voltage_v is NaN/Inf",
+        "current_a has invalid non-numeric value: corrupted_string",
+        "Only 1/8 canonical channels provided; insufficient for reliable mission impact assessment"
+      ],
+      "persistence": "INSUFFICIENT EVIDENCE",
+      "trend_summary": "Unable to establish valid temporal trend",
+      "urgency": "WATCH",
+      "recommended_operator_response": [
+        "Verify telemetry downlink stream and sensor communication interface.",
+        "Check ground data processing pipeline for corrupted frames."
+      ],
+      "root_cause_context": {},
+      "data_quality": "INSUFFICIENT",
+      "analysis_method": "Deterministic Subsystem Capability & Mission Dependency Matrix",
+      "limitations": "Mission impact assessment is a telemetry-grounded operational risk assessment for decision support. It does not represent a validated flight-certification model.",
+      "scenario_id": 20,
+      "scenario_name": "Scenario 20: Malformed Input (NaN, Inf, and String Contamination)",
+      "test_passed": true,
+      "fail_reasons": []
+    },
+    {
+      "satellite_id": "SAT-NOMINAL-B",
+      "mission_impact_level": "NOMINAL",
+      "affected_capabilities": [
+        "NOMINAL_OPERATIONS"
+      ],
+      "primary_operational_impact": "All monitored subsystems operating within nominal flight envelopes.",
+      "potential_mission_consequences": [
+        "No mission degradation detected; operations proceeding as scheduled."
+      ],
+      "impacted_subsystems": [
+        "NONE"
+      ],
+      "risk_drivers": [
+        "All parameters within nominal operational envelopes."
+      ],
+      "persistence": "STEADY_NOMINAL",
+      "trend_summary": "Nominal single frame observation",
+      "urgency": "ROUTINE",
+      "recommended_operator_response": [
+        "Maintain standard routine telemetry monitoring."
+      ],
+      "root_cause_context": {},
+      "data_quality": "GOOD",
+      "analysis_method": "Deterministic Subsystem Capability & Mission Dependency Matrix",
+      "limitations": "Mission impact assessment is a telemetry-grounded operational risk assessment for decision support. It does not represent a validated flight-certification model.",
+      "scenario_id": 21,
+      "scenario_name": "Scenario 21: Cross-Satellite Isolation State Integrity",
+      "test_passed": true,
+      "fail_reasons": []
+    },
+    {
+      "satellite_id": "SAT-REP-1",
+      "mission_impact_level": "HIGH",
+      "affected_capabilities": [
+        "BATTERY ENDURANCE",
+        "POWER AVAILABILITY",
+        "THERMAL SAFETY",
+        "ATTITUDE / POINTING CAPABILITY",
+        "SPACECRAFT HEALTH / SURVIVABILITY",
+        "PAYLOAD / MISSION OPERATIONS"
+      ],
+      "primary_operational_impact": "Operational capabilities are degraded with potential mission constraints.",
+      "potential_mission_consequences": [
+        "Potential mission impact: reduced stored energy margin could constrain upcoming orbit cycles.",
+        "Operational risk: unstable bus voltage may trigger autonomous load-shedding or subsystem shutdown.",
+        "Potential mission impact: electrical overload could induce thermal stress and accelerate battery drain.",
+        "Operational risk: elevated temperatures may reduce electronics lifespan or trigger autonomous thermal protection throttling.",
+        "Potential mission impact: pointing degradation could constrain payload imaging and ground station antenna tracking.",
+        "Compound operational risk: combined battery depletion and bus undervoltage significantly heighten EPS failure probability.",
+        "Compound operational risk: simultaneous high electrical current and elevated thermal state indicate severe thermal-electrical coupling.",
+        "Potential mission impact: multi-subsystem cascading degradation threatens overall spacecraft health and survivability.",
+        "Operational risk: mission payload observation schedule may require rescheduling or suspension."
+      ],
+      "impacted_subsystems": [
+        "EPS",
+        "TCS",
+        "ADCS"
+      ],
+      "risk_drivers": [
+        "Battery SoC degraded to 38.0%",
+        "Main bus voltage anomaly (22.5V)",
+        "High electrical bus current (16.0A)",
+        "Thermal excursion (56.0\u00b0C)",
+        "Pointing attitude error (2.60\u00b0)"
+      ],
+      "persistence": "SINGLE_FRAME (Transient / Initial Alert)",
+      "trend_summary": "Initial observation without baseline history",
+      "urgency": "ACTION REQUIRED",
+      "recommended_operator_response": [
+        "Prioritize energy conservation and monitor battery state-of-charge.",
+        "Review EPS load distribution and reduce non-essential loads.",
+        "Review subsystem power consumption telemetry to isolate unexpected electrical draws.",
+        "Reduce thermal load, duty-cycle high-power transmitters, and monitor temperature trend.",
+        "Review ADCS telemetry, reaction wheel speeds, and verify star tracker / sun sensor health.",
+        "Execute emergency power conservation mode: disable non-essential science payload.",
+        "Throttle active high-draw subsystems immediately to prevent thermal runaway.",
+        "Prioritize the highest-severity subsystem and monitor interacting telemetry channels."
+      ],
+      "root_cause_context": {},
+      "data_quality": "GOOD",
+      "analysis_method": "Deterministic Subsystem Capability & Mission Dependency Matrix",
+      "limitations": "Mission impact assessment is a telemetry-grounded operational risk assessment for decision support. It does not represent a validated flight-certification model.",
+      "scenario_id": 22,
+      "scenario_name": "Scenario 22: Deterministic Repeatability & Idempotence Check",
+      "test_passed": true,
+      "fail_reasons": []
+    }
+  ]
+}
